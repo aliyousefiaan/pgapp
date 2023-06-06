@@ -25,7 +25,7 @@ API use:
     - Simple pool:
 
         application:ensure_all_started(pgapp).
-        pgapp:connect([{size, 10}, {database, "mydb"}, {username, "foo"}, {password, "bar"}]).
+        pgapp:connect([{size, 10}, {host, "localhost"}, {database, "mydb"}, {username, "foo"}, {password, "bar"}]).
         pgapp:equery("select current_date", []),
         pgapp:with_transaction(fun() ->
                                      pgapp:squery("update ..."),
@@ -36,7 +36,7 @@ API use:
     - Multi pool:
 
         application:ensure_all_started(pgapp).
-        pgapp:connect(a_pool_name, [{size, 10}, {database, "mydb"}, {username, "foo"}, {password, "bar"}]).
+        pgapp:connect(a_pool_name, [{size, 10}, {host, "localhost"}, {database, "mydb"}, {username, "foo"}, {password, "bar"}]).
         pgapp:equery(a_pool_name, "select current_date", []).
 
 The equery and squery API's are the same as those of epgsql: https://github.com/epgsql/epgsql
